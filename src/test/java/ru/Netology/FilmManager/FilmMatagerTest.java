@@ -57,7 +57,6 @@ public class FilmMatagerTest {
         manager.add("Movie IV");
         manager.add("Movie V");
 
-
         String[] expected = {"Movie V", "Movie IV", "Movie III", "Movie II", "Movie I"};
         String[] actual = manager.findLast();
         Assertions.assertArrayEquals(expected, actual);
@@ -75,6 +74,31 @@ public class FilmMatagerTest {
         manager.add("Movie VII");
 
         String[] expected = {"Movie VII", "Movie VI", "Movie V", "Movie IV", "Movie III", "Movie II", "Movie I"};
+        String[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void lessThanTheLimit() {
+        FilmManager manager = new FilmManager(5);
+        manager.add("Movie I");
+        manager.add("Movie II");
+        manager.add("Movie III");
+
+        String[] expected = { "Movie III", "Movie II", "Movie I"};
+        String[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void moreThanTheLimit() {
+        FilmManager manager = new FilmManager();
+        manager.add("Movie I");
+        manager.add("Movie II");
+        manager.add("Movie III");
+        manager.add("Movie IV");
+        manager.add("Movie V");
+        manager.add("Movie VI");
+
+        String[] expected = {"Movie VI","Movie V","Movie IV", "Movie III", "Movie II"};
         String[] actual = manager.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
